@@ -1,0 +1,92 @@
+@import url('https://fonts.cdnfonts.com/css/sofachrome');
+
+body {
+  font-family: 'Sofachrome Rg', sans-serif;
+  background-image: url("../media/bg.png");
+  background-size: cover;
+ margin: 0;
+overflow: hidden;
+}
+
+.container {
+  display: grid;
+  place-items: center;
+    height: 100vh;
+    overflow: hidden;
+
+}
+
+
+.modal {
+width: fit-content;
+height: fit-content;
+  padding: 3px;
+  background: #BDCED6;
+  z-index: 100;
+}
+
+
+.modal header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.floater {
+  position: absolute;
+   opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.floater.show {
+  opacity: 1;
+}
+
+.container > .floater:nth-child(1) {
+ top: 100px;
+  left: 100px;
+}
+
+.container > .floater:nth-child(4) {
+  bottom: 200px;
+  right: 100px;
+}
+
+#main-vid {
+  position: absolute;
+  height: 85%;
+  width: 100%;
+}
+
+.icons {
+  margin-right: 3px;
+  img {
+    cursor: pointer;
+    width: 10px;
+  }
+}
+
+.star {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.navbar {
+  display: flex;
+  margin: 8px;
+  gap: 20px;
+  justify-content: right;
+  font-size: 21px;
+
+  a {
+   text-decoration: none;
+   color: black; 
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+.hidden {
+  display: none;
+}

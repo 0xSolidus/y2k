@@ -1,21 +1,27 @@
-import "./App.css";
+import "./styles/App.css"
 
 import video from "./media/vid1.mp4";
+import video2 from "./media/vid2.mp4";
 import star from "./media/star.gif";
 
 import X from "./media/X.svg";
 
 
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Navbar } from "./Navbar";
-import { Modal } from "./Modal";
+import { FloatingModal } from "./FloatingModal";
 
 function App() {
 
   const [modalOpen, setModalOpen] = useState(true)
   const [floatingModalOpen, setFloatingModalOpen] = useState(false)
   const [secondFloatingModalOpen, setSecondFloatingModalOpen] = useState(false)
+
+   const containerRef = useRef<HTMLDivElement>(null);
+   const modalRef = useRef<HTMLDivElement>(null);
+   const secondModalRef = useRef<HTMLDivElement>(null);
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -36,16 +42,18 @@ function App() {
     <>
       <Navbar />
 
-      <div className="container">
-        <Modal
+      <div className="container" ref={containerRef}>
+        <FloatingModal
           video={video}
           setModalOpen={setFloatingModalOpen}
           modalOpen={floatingModalOpen}
+          containerRef={containerRef}
+          modalRef={modalRef}
         />
 
-        <div className={`modal ${!modalOpen ? "hidden" : ""}`}>
+        <div id="main-modal" className={`modal ${!modalOpen ? "hidden" : ""}`}>
           <header>
-            <div>Y2K</div>
+            <div>$Y2K</div>
             <div className="icons">
               <img src={X} onClick={() => setModalOpen(false)}></img>
             </div>
@@ -53,10 +61,14 @@ function App() {
           <video src={video} autoPlay controls muted></video>
         </div>
 
-        <Modal
+        <video id="main-vid" src={video2} autoPlay muted loop={true}></video>
+
+        <FloatingModal
           video={video}
           setModalOpen={setSecondFloatingModalOpen}
           modalOpen={secondFloatingModalOpen}
+          containerRef={containerRef}
+          modalRef={secondModalRef}
         />
 
         <a href="/soon">
