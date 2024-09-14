@@ -1,30 +1,27 @@
-@import url('https://fonts.cdnfonts.com/css/sofachrome');
+@import url("https://fonts.cdnfonts.com/css/sofachrome");
 
 body {
-  font-family: 'Sofachrome Rg', sans-serif;
+  font-family: "Sofachrome Rg", sans-serif;
   background-image: url("../media/bg.png");
   background-size: cover;
- margin: 0;
-overflow: hidden;
+  margin: 0;
+  overflow: hidden;
 }
 
 .container {
   display: grid;
   place-items: center;
-    height: 100vh;
-    overflow: hidden;
-
+  height: 100vh;
+  overflow: hidden;
 }
-
 
 .modal {
-width: fit-content;
-height: fit-content;
+  width: fit-content;
+  height: fit-content;
   padding: 3px;
-  background: #BDCED6;
+  background: #bdced6;
   z-index: 100;
 }
-
 
 .modal header {
   display: flex;
@@ -33,7 +30,7 @@ height: fit-content;
 
 .floater {
   position: absolute;
-   opacity: 0;
+  opacity: 0;
   transition: opacity 1s ease-in-out;
 }
 
@@ -42,7 +39,7 @@ height: fit-content;
 }
 
 .container > .floater:nth-child(1) {
- top: 100px;
+  top: 100px;
   left: 100px;
 }
 
@@ -79,8 +76,8 @@ height: fit-content;
   font-size: 21px;
 
   a {
-   text-decoration: none;
-   color: black; 
+    text-decoration: none;
+    color: black;
   }
   a:hover {
     text-decoration: underline;
@@ -89,4 +86,20 @@ height: fit-content;
 
 .hidden {
   display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .modal video {
+    max-width: 270px;
+  }
+  #main-vid {
+    width: 80%;
+    height: 100%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .navbar {
+    font-size: 16px;
+  }
 }
