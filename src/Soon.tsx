@@ -11,7 +11,7 @@ export const Soon = () => {
       <main>
         <img src={Y2K} />
 
-        <img className="star" src={star} />
+        <img className="star" src={star} alt="Y2K Logo image with a light blue background"/>
       </main>
     </>
   );
