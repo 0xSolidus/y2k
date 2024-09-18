@@ -1,0 +1,18 @@
+.popup {
+    display: flex;
+    flex-direction: column;
+  position: absolute;
+  right: -250px;
+  top: 200px;
+  transition: right 0.5s ease-out;
+
+  img {
+    width: 300px;
+    height: 200px;
+  }
+}
+
+.popup:hover {
+  cursor: pointer;
+  right: 0;
+}

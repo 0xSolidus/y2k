@@ -11,6 +11,7 @@ import X from "./media/X.svg";
 import { useEffect, useRef, useState } from "react";
 import { Navbar } from "./Navbar";
 import { FloatingModal } from "./FloatingModal";
+import { Popup } from "./Popup";
 
 function App() {
 
@@ -62,6 +63,8 @@ function App() {
         </div>
 
         <video id="main-vid" src={video2} autoPlay muted loop={true}></video>
+
+        <Popup />
 
         <FloatingModal
           video={video}
