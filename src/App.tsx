@@ -9,6 +9,8 @@ import bgPattern from "./media/bg.png"
 import starGif from "./media/star.gif"
 import trustme from "./media/trustme.gif"
 import { GuestBook } from "./components/GuestBook"
+import { WorkExperienceModal } from "./components/WorkExperienceModal"
+import { MoodGallery } from "./components/MoodGallery"
 
 type WindowKey = 'about' | 'shame' | 'chat' | 'music' | 'quote' | 'projects'
 type WindowState = Record<WindowKey, boolean>
@@ -22,6 +24,8 @@ const App = () => {
     quote: true,
     projects: true
   })
+
+  const [isWorkModalOpen, setIsWorkModalOpen] = useState(false)
 
   const toggleWindow = (window: WindowKey) => {
     setOpenWindows(prev => ({
@@ -53,7 +57,10 @@ const App = () => {
         className="fixed top-10 right-10 w-12 h-12 animate-pulse pointer-events-none"
       />
 
-      <Navbar onWindowClick={toggleWindow} />
+      <Navbar 
+        onWindowClick={toggleWindow} 
+        onWorkClick={() => setIsWorkModalOpen(true)} 
+      />
       
       {/* Remove fixed height constraint here */}
       <div className="flex pt-[50px] relative z-10">
@@ -81,21 +88,19 @@ const App = () => {
                     ✧ Alisa (Luna) ✧
                   </p>
                   <p className="text-sm text-gray-600">
-                    22 y/o Full-Stack Developer 👩‍💻
+                    22 y/o Vibing in Switzerland 🌸
                   </p>
                 </div>
 
                 <div className="w-full space-y-3">
                   <div className="p-3 rounded-lg bg-gradient-to-r from-pink-50 to-purple-50 border border-pink-200">
                     <div className="text-center space-y-1">
-                      <p className="text-xs text-gray-500 mb-2">Current Tech Journey ✨</p>
+                      <p className="text-xs text-gray-500 mb-2">Current Obsessions ✨</p>
                       <div className="flex flex-wrap justify-center gap-2">
-                        <span className="px-2 py-1 bg-blue-50 text-blue-600 rounded-md text-xs">TypeScript</span>
-                        <span className="px-2 py-1 bg-orange-50 text-orange-600 rounded-md text-xs">Svelte</span>
-                        <span className="px-2 py-1 bg-cyan-50 text-cyan-600 rounded-md text-xs">React</span>
-                        <span className="px-2 py-1 bg-purple-50 text-purple-600 rounded-md text-xs">Next.js</span>
-                        <span className="px-2 py-1 bg-indigo-50 text-indigo-600 rounded-md text-xs">Node.js</span>
-                        <span className="px-2 py-1 bg-gray-50 text-gray-600 rounded-md text-xs">C++</span>
+                        <span className="px-2 py-1 bg-pink-50 text-pink-600 rounded-md text-xs">Anime</span>
+                        <span className="px-2 py-1 bg-purple-50 text-purple-600 rounded-md text-xs">Art</span>
+                        <span className="px-2 py-1 bg-cyan-50 text-cyan-600 rounded-md text-xs">Music</span>
+                        <span className="px-2 py-1 bg-green-50 text-green-600 rounded-md text-xs">Coding</span>
                       </div>
                     </div>
                   </div>
@@ -103,7 +108,7 @@ const App = () => {
                   <div className="p-3 rounded-lg bg-gradient-to-r from-purple-50 to-pink-50 border border-pink-200 relative overflow-hidden group">
                     <div className="absolute inset-0 bg-white/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity" />
                     <p className="text-sm text-center font-medium relative z-10">
-                      All projects under NDA... trust me bro... 🤫✨
+                      Currently: Touching grass & vibing ✨
                     </p>
                   </div>
                 </div>
@@ -119,12 +124,12 @@ const App = () => {
                       <span className="text-pink-500">RU / EN / DE</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600">✧ Hobbies</span>
-                      <span className="text-pink-500">Anime & Pixel Art</span>
+                      <span className="text-gray-600">✧ Mood</span>
+                      <span className="text-pink-500">✨ Vibing ✨</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-gray-600">✧ Status</span>
-                      <span className="text-pink-500">Available for Work</span>
+                      <span className="text-pink-500">Touching Grass</span>
                     </div>
                   </div>
                 </div>
@@ -175,35 +180,17 @@ const App = () => {
               </div>
             )}
 
-            {openWindows.projects && (
-              <div className="col-span-1 h-auto">
-                <StaticWindow 
-                  title="✧･ﾟ Work Experience ･ﾟ✧" 
-                  isOpen={true}
-                  onClose={() => toggleWindow('projects')}
-                >
-                  <div className="flex flex-col items-center gap-4">
-                    <img 
-                      src={trustme} 
-                      alt="Trust me bro" 
-                      className="w-full rounded-lg border border-pink-200 shadow-sm"
-                    />
-                    <div className="space-y-3 w-full">
-                      <div className="p-3 rounded-lg bg-gradient-to-r from-pink-50 to-purple-50 border border-pink-200">
-                        <p className="text-center text-sm font-medium text-gray-700">
-                          ALL my work under NDA... NO CAP FR FR 🤫
-                        </p>
-                      </div>
-                      <div className="p-2 rounded-lg bg-white/80 border border-pink-200">
-                        <p className="text-center text-xs text-gray-500">
-                          Source: Just trust me bro 😌✨
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </StaticWindow>
-              </div>
-            )}
+            {/* Replace projects with mood gallery */}
+            <div className="col-span-1">
+              <StaticWindow
+                title=""
+                isOpen={true}
+                onClose={() => {}}
+                className="overflow-hidden"
+              >
+                <MoodGallery />
+              </StaticWindow>
+            </div>
 
             {openWindows.chat && (
               <div className="col-span-2">
@@ -219,6 +206,11 @@ const App = () => {
           </div>
         </div>
       </div>
+
+      <WorkExperienceModal 
+        isOpen={isWorkModalOpen}
+        onOpenChange={setIsWorkModalOpen}
+      />
     </div>
   )
 }
